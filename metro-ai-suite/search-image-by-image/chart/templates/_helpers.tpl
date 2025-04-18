@@ -1,4 +1,4 @@
-{{- define "search_image_by_image.fullname" -}}
+{{- define "image_based_video_search.fullname" -}}
 {{- if .Values.fullnameOverride -}}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" -}}
 {{- else -}}
@@ -11,7 +11,7 @@
 {{- end -}}
 {{- end -}}
 
-{{- define "search_image_by_image.name" -}}
+{{- define "image_based_video_search.name" -}}
 {{- if .Values.nameOverride -}}
 {{- .Values.nameOverride | trunc 63 | trimSuffix "-" -}}
 {{- else -}}
@@ -19,8 +19,8 @@
 {{- end -}}
 {{- end -}}
 
-{{- define "search_image_by_image.labels" -}}
-{{ include "search_image_by_image.selectorLabels" .}}
+{{- define "image_based_video_search.labels" -}}
+{{ include "image_based_video_search.selectorLabels" .}}
 {{ if .Chart.Version -}}
 {{ printf "katenary.v3/chart-version: '%s'" .Chart.Version }}
 {{- end }}
@@ -29,7 +29,7 @@
 {{- end }}
 {{- end -}}
 
-{{- define "search_image_by_image.selectorLabels" -}}
+{{- define "image_based_video_search.selectorLabels" -}}
 {{- $name := default .Chart.Name .Values.nameOverride -}}
 {{ printf "katenary.v3/name: %s" $name }}
 {{ printf "katenary.v3/instance: %s" .Release.Name }}

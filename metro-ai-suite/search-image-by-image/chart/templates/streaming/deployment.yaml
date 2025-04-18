@@ -5,20 +5,20 @@ metadata:
     katenary.v3/compose-hash: 4dd006301f669d044c60fd579bb24fb08133f26f
     katenary.v3/version: release-3.0.0-rc2
   labels:
-    {{- include "search_image_by_image.labels" . | nindent 4 }}
+    {{- include "image_based_video_search.labels" . | nindent 4 }}
     katenary.v3/component: streaming
-  name: '{{ include "search_image_by_image.fullname" . }}-streaming'
+  name: '{{ include "image_based_video_search.fullname" . }}-streaming'
 spec:
   replicas: {{ .Values.streaming.replicas }}
   selector:
     matchLabels:
-      {{- include "search_image_by_image.selectorLabels" . | nindent 6 }}
+      {{- include "image_based_video_search.selectorLabels" . | nindent 6 }}
       katenary.v3/component: streaming
   strategy: {}
   template:
     metadata:
       labels:
-        {{- include "search_image_by_image.selectorLabels" . | nindent 8 }}
+        {{- include "image_based_video_search.selectorLabels" . | nindent 8 }}
         katenary.v3/component: streaming
     spec:
       containers:
@@ -30,7 +30,7 @@ spec:
           - |
             wget -O file.mp4 https://github.com/intel-iot-devkit/sample-videos/raw/master/person-bicycle-car-detection.mp4 && \
             gst-launch-1.0 filesrc location=file.mp4 ! qtdemux name=mdemux ! h264parse ! video/x-h264,stream-format=byte-stream ! mpegtsmux name=mux ! filesink location=file.ts && \
-            gst-launch-1.0 multifilesrc location=file.ts loop=true ! tsdemux ! h264parse ! rtspclientsink protocols=tcp location=rtsp://{{ include "search_image_by_image.fullname" . }}-mediamtx:8554/stream
+            gst-launch-1.0 multifilesrc location=file.ts loop=true ! tsdemux ! h264parse ! rtspclientsink protocols=tcp location=rtsp://{{ include "image_based_video_search.fullname" . }}-mediamtx:8554/stream
         env:
           {{- if .Values.httpProxy }}
           - name: http_proxy

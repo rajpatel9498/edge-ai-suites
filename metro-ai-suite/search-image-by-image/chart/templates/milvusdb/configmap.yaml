@@ -10,9 +10,9 @@ metadata:
     katenary.v3/compose-hash: 4dd006301f669d044c60fd579bb24fb08133f26f
     katenary.v3/version: release-3.0.0-rc2
   labels:
-    {{- include "search_image_by_image.labels" . | nindent 4 }}
+    {{- include "image_based_video_search.labels" . | nindent 4 }}
     katenary.v3/component: milvusdb
-  name: '{{ include "search_image_by_image.fullname" . }}-milvusdb-env'
+  name: '{{ include "image_based_video_search.fullname" . }}-milvusdb-env'
 ---
 apiVersion: v1
 data:
@@ -30,6 +30,6 @@ metadata:
     katenary.v3/compose-hash: 4dd006301f669d044c60fd579bb24fb08133f26f
     katenary.v3/version: release-3.0.0-rc2
   labels:
-    {{- include "search_image_by_image.labels" . | nindent 4 }}
+    {{- include "image_based_video_search.labels" . | nindent 4 }}
     katenary.v3/component: milvusdb
-  name: '{{ include "search_image_by_image.fullname" . }}-milvusdb-config'
+  name: '{{ include "image_based_video_search.fullname" . }}-milvusdb-config'

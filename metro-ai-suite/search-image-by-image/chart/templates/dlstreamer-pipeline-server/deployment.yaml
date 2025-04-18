@@ -5,20 +5,20 @@ metadata:
     katenary.v3/compose-hash: 4dd006301f669d044c60fd579bb24fb08133f26f
     katenary.v3/version: release-3.0.0-rc2
   labels:
-    {{- include "search_image_by_image.labels" . | nindent 4 }}
+    {{- include "image_based_video_search.labels" . | nindent 4 }}
     katenary.v3/component: dlstreamer-pipeline-server
-  name: '{{ include "search_image_by_image.fullname" . }}-dlstreamer-pipeline-server'
+  name: '{{ include "image_based_video_search.fullname" . }}-dlstreamer-pipeline-server'
 spec:
   replicas: {{ .Values.dlstreamerpipelineserver.replicas }}
   selector:
     matchLabels:
-      {{- include "search_image_by_image.selectorLabels" . | nindent 6 }}
+      {{- include "image_based_video_search.selectorLabels" . | nindent 6 }}
       katenary.v3/component: dlstreamer-pipeline-server
   strategy: {}
   template:
     metadata:
       labels:
-        {{- include "search_image_by_image.selectorLabels" . | nindent 8 }}
+        {{- include "image_based_video_search.selectorLabels" . | nindent 8 }}
         katenary.v3/component: dlstreamer-pipeline-server
     spec:
       containers:
@@ -60,11 +60,11 @@ spec:
             ) &&
             tail -f /dev/null
         volumeMounts:
-        - name: '{{ include "search_image_by_image.fullname" . }}-dlstreamer-pipeline-server-models'
+        - name: '{{ include "image_based_video_search.fullname" . }}-dlstreamer-pipeline-server-models'
           mountPath: /output
       - envFrom:
         - configMapRef:
-            name: '{{ include "search_image_by_image.fullname" . }}-dlstreamer-pipeline-server-env'
+            name: '{{ include "image_based_video_search.fullname" . }}-dlstreamer-pipeline-server-env'
         image: '{{ tpl .Values.dlstreamerpipelineserver.repository.image $ }}:{{ tpl .Values.dlstreamerpipelineserver.repository.tag $ | default "latest" }}'
         securityContext:
           runAsUser: 0
@@ -83,32 +83,32 @@ spec:
         - containerPort: 8080
           name: port-8080
         volumeMounts:
-        - name: '{{ include "search_image_by_image.fullname" . }}-dlstreamer-pipeline-server-pipeline'
+        - name: '{{ include "image_based_video_search.fullname" . }}-dlstreamer-pipeline-server-pipeline'
           mountPath: /tmp/pipeline
           subpath: config.json
-        - name: '{{ include "search_image_by_image.fullname" . }}-dlstreamer-pipeline-server-pipeline-root'
+        - name: '{{ include "image_based_video_search.fullname" . }}-dlstreamer-pipeline-server-pipeline-root'
           mountPath: /var/cache/pipeline_root
-        - name: '{{ include "search_image_by_image.fullname" . }}-dlstreamer-pipeline-server-tmp'
+        - name: '{{ include "image_based_video_search.fullname" . }}-dlstreamer-pipeline-server-tmp'
           mountPath: /tmp
-        - name: '{{ include "search_image_by_image.fullname" . }}-dlstreamer-pipeline-server-models'
+        - name: '{{ include "image_based_video_search.fullname" . }}-dlstreamer-pipeline-server-models'
           mountPath: /models
         {{- if .Values.dlstreamerpipelineserver.resources }}
         resources:
           {{ .Values.dlstreamerpipelineserver.resources | toYaml | nindent 10 }}
         {{- end }}
       volumes:
-      - name: '{{ include "search_image_by_image.fullname" . }}-dlstreamer-pipeline-server-pipeline'
+      - name: '{{ include "image_based_video_search.fullname" . }}-dlstreamer-pipeline-server-pipeline'
         configMap:
-          name: '{{ include "search_image_by_image.fullname" . }}-dlstreamer-pipeline-server-pipeline'
-      - name: '{{ include "search_image_by_image.fullname" . }}-dlstreamer-pipeline-server-pipeline-root'
+          name: '{{ include "image_based_video_search.fullname" . }}-dlstreamer-pipeline-server-pipeline'
+      - name: '{{ include "image_based_video_search.fullname" . }}-dlstreamer-pipeline-server-pipeline-root'
         emptyDir:
           sizeLimit: 1Gi
           medium: Memory
-      - name: '{{ include "search_image_by_image.fullname" . }}-dlstreamer-pipeline-server-tmp'
+      - name: '{{ include "image_based_video_search.fullname" . }}-dlstreamer-pipeline-server-tmp'
         emptyDir:
           sizeLimit: 1Gi
           medium: Memory
-      - name: '{{ include "search_image_by_image.fullname" . }}-dlstreamer-pipeline-server-models'
+      - name: '{{ include "image_based_video_search.fullname" . }}-dlstreamer-pipeline-server-models'
         emptyDir:
           sizeLimit: 10Gi
       {{- if .Values.pullSecrets }}
