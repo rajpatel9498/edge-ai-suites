@@ -25,7 +25,7 @@ To deploy the **Image-Based Video Search** application with Edge Orchestrator fo
 
     ``` bash
     git clone https://github.com/open-edge-platform/edge-ai-suites -b <version>
-    cd edge-ai-suites/metro-ai-suite/search-image-by-image
+    cd edge-ai-suites/metro-ai-suite/image-based-video-search
     ```
 
 2. From the web-browser open the URL of the Edge Orchestrator and Import the Deployment Package present in the folder **deployment-package** following the steps described in [Import Deployment Package](<https://docs.openedgeplatform.intel.com/edge-manage-docs/main/user_guide/package_software/import_deployment.html>)
@@ -44,7 +44,7 @@ To set up a deployment:
 
 1. Select Deployments tab and click Setup a Deployment button. The Setup a Deployment page appears.
 
-1. In the Setup a Deployment page, select the **sibi-app** package for the deployment from list, and click Next. The Select a Profile step appears:
+1. In the Setup a Deployment page, select the **ibvs-app** package for the deployment from list, and click Next. The Select a Profile step appears:
 
 1. In the Select a Profile step, select the deployment profile, and click Next. The Override Profile Values page appears.
 

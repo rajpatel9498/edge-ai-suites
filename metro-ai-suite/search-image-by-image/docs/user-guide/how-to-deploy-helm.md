@@ -21,37 +21,37 @@ Before You Begin, ensure the following:
 
 ```bash
 helm upgrade \
-    --install sibi oci://registry-1.docker.io/intel/search-image-by-image \
+    --install ibvs oci://registry-1.docker.io/intel/image-based-video-search \
     --create-namespace \
-    -n sibi
+    -n ibvs
 ```
 
 Some containers in the deployment requires network access.
 If you are in a proxy environment, pass the proxy environment variables as follows:
 
 ```bash
-# Install the Image-Based Video Search chart in the sibi namespace
+# Install the Image-Based Video Search chart in the ibvs namespace
 # Replace the proxy values with the specific ones for your environment:
 helm upgrade \
-    --install sibi oci://registry-1.docker.io/intel/search-image-by-image \
+    --install ibvs oci://registry-1.docker.io/intel/image-based-video-search \
     --create-namespace \
     --set httpProxy="http://proxy.example.com:8080" \
     --set httpsProxy="http://proxy.example.com:8080" \
     --set noProxy="localhost\,127.0.0.1" \
-    -n sibi
+    -n ibvs
 ```
 
 To get the port where the application is serving, run the following command:
 
 ```bash
-kubectl -n sibi get svc/sibi-app
+kubectl -n ibvs get svc/ibvs-app
 ```
 
 This is an example output of the previous command:
 
 ```text
 NAME       TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
-sibi-app   NodePort   10.109.118.49   <none>        3000:31998/TCP   14m
+ibvs-app   NodePort   10.109.118.49   <none>        3000:31998/TCP   14m
 ```
 
 Now frontend should be accessible at http://localhost:31998/.
@@ -60,7 +60,7 @@ Finally, the app can be uninstalled using the following command:
 
 ```bash
 # And this is how you uninstall the chart:
-helm uninstall -n sibi sibi
+helm uninstall -n ibvs ibvs
 ```
 
 ## Troubleshooting

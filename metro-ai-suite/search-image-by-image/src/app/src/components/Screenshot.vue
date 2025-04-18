@@ -153,7 +153,7 @@ export default defineComponent({
     async startAnalysis() {
       const body = {
           source: {
-              uri: "rtsp://sibi-mediamtx:8554/stream",
+              uri: "rtsp://ibvs-mediamtx:8554/stream",
               type: "uri"
           },
           destination: {

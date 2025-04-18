@@ -8,26 +8,26 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/stream': {
-        target: 'http://sibi-mediamtx:8888',
+        target: 'http://ibvs-mediamtx:8888',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/stream/, '/stream'), // Optional path rewrite
       },
       '/search': {
-        target: 'http://sibi-featurematching:8000',
+        target: 'http://ibvs-featurematching:8000',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/search/, '/search'), // Optional path rewrite
       },
       '/static/': {
-        target: 'http://sibi-featurematching:8000',
+        target: 'http://ibvs-featurematching:8000',
         changeOrigin: true
       },
       '/clear': {
-        target: 'http://sibi-featurematching:8000',
+        target: 'http://ibvs-featurematching:8000',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/clear/, '/clear'), // Optional path rewrite
       },
       '/pipelines': {
-        target: 'http://sibi-dlstreamer-pipeline-server:8080',
+        target: 'http://ibvs-dlstreamer-pipeline-server:8080',
         changeOrigin: true
       }
     },

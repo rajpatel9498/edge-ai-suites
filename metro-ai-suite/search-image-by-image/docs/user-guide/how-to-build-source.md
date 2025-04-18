@@ -34,7 +34,7 @@ Before you begin, ensure the following:
    - Run:
      ```bash
      git clone https://github.com/open-edge-platform/edge-ai-suites.git
-     cd ./edge-ai-suites/metro-ai-suite/search-image-by-image
+     cd ./edge-ai-suites/metro-ai-suite/image-based-video-search
      ```
 
 2. **Build Containers**:

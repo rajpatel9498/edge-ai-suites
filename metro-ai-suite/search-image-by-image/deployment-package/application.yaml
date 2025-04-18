@@ -5,17 +5,17 @@ specSchema: "Application"
 schemaVersion: "0.1"
 $schema: "https://schema.intel.com/catalog.orchestrator/0.1/schema"
 
-name: sibi-app
+name: ibvs-app
 version: 1.0.0
 description: "Search Image by Image Sample Application"
 
 helmRegistry: "docker-hub"
-chartName: "intel/search-image-by-image"
+chartName: "intel/image-based-video-search"
 chartVersion: "1.0.0"
 
 profiles:
   - name: "default"
-    valuesFileName: "sibi-values.yaml"
+    valuesFileName: "ibvs-values.yaml"
     parameterTemplates:
       - name: httpProxy
         displayName: "Http proxy"

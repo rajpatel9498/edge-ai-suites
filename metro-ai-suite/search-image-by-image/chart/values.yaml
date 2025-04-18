@@ -230,7 +230,7 @@ app:
   # key: app.repository
   repository:
     # key: app.repository.image
-    image: docker.io/intel/search-image-by-image
+    image: docker.io/intel/image-based-video-search
     # key: app.repository.tag
     tag: v1.0.0
   # key: app.replicas
@@ -324,6 +324,6 @@ noProxy: ""
 
 # fullnameOverride allows you to specify a different prefix
 # for the objects created by Kubernetes
-fullnameOverride: "sibi"
+fullnameOverride: "ibvs"
 
 # vim: ft=yaml
