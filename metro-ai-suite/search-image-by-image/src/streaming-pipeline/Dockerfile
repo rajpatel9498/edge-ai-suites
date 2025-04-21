@@ -20,7 +20,7 @@ RUN if [ "$INSTALL_SOURCES" = "yes" ]; then \
         sed -i 's/^Types: deb$/Types: deb deb-src/' /etc/apt/sources.list.d/ubuntu.sources && \
         apt-get update && \
         root_dir=$PWD && \
-        mkdir -p ./apt-sources/SIBI && cd ./apt-sources/SIBI && \
+        mkdir -p ./apt-sources/IBVS && cd ./apt-sources/IBVS && \
         SOURCE_DIR='./apt-sources/copyleft' && \
         mkdir -p $SOURCE_DIR && cd $SOURCE_DIR && \
         echo -n $null > copyleft_package_list.txt && \

@@ -1,6 +1,6 @@
 # Architecture Overview
 
-The Image-Based Video Search Application is a modular reference implementation designed to help developers create vision-based search systems utilizing Vision AI and third-party microservices. This page provides a technical overview of the application’s architecture, components, and extenibvslity.
+The Image-Based Video Search Application is a modular reference implementation designed to help developers create vision-based search systems utilizing Vision AI and third-party microservices. This page provides a technical overview of the application’s architecture, components, and extensibility.
 
 ## Purpose
 
@@ -65,7 +65,7 @@ The Image-Based Video Search Application is designed to:
    - **How it's used**: Stores feature vectors and provides a vector search interface.
    - **Benefits**: Enables fast and scalable image similarity search.
 
-## Extenibvslity
+## Extensibility
 
 The Image-Based Video Search Application is designed with modularity in mind, allowing developers to:
 
